@@ -40,24 +40,14 @@ function Home() {
 
         <h1 className="hero-title" style={{
           fontFamily: "var(--font-heading)",
-          fontSize: "68px",
           fontWeight: "800",
-          lineHeight: "1.1",
           color: "var(--text-primary)",
-          letterSpacing: "-2.5px",
-          maxWidth: "900px",
-          margin: "0 auto 24px"
+          letterSpacing: "-2.5px"
         }}>
           Intelligent Payments for the <span style={{ background: "linear-gradient(90deg, #A855F7, #4F46E5)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Decentralized Future</span>
         </h1>
 
-        <p className="hero-desc" style={{
-          fontSize: "18px",
-          color: "var(--text-secondary)",
-          maxWidth: "640px",
-          margin: "0 auto 48px",
-          lineHeight: "1.6"
-        }}>
+        <p className="hero-desc">
           The first community-owned AI coprocessor and Web3 payment engine. Seamlessly route transactions, execute intelligent on-chain inferences, and secure assets on Ritual.
         </p>
 
