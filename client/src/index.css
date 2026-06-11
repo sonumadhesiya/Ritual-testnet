@@ -232,6 +232,22 @@ a:hover {
   color: var(--text-primary);
 }
 
+.sidebar-close-btn {
+  display: none;
+  margin-left: auto;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 22px;
+  padding: 10px;
+  transition: color 0.2s ease;
+}
+
+.sidebar-close-btn:hover {
+  color: var(--text-primary);
+}
+
 .sidebar-nav {
   flex: 1;
 }
@@ -460,8 +476,27 @@ a:hover {
   gap: 12px;
 }
 
-.header-faucet-link {
+.mobile-menu-btn {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.header-faucet-link {
   align-items: center;
   gap: 8px;
   padding: 12px 18px;
@@ -534,6 +569,10 @@ a:hover {
 /* Wallet connected button & dropdown */
 .wallet-dropdown-container {
   position: relative;
+}
+
+.mobile-nav-backdrop {
+  display: none;
 }
 
 .wallet-connected-btn {
@@ -890,12 +929,33 @@ a:hover {
   }
 
   .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-    padding: 24px 20px;
+    width: 280px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    z-index: 120;
+    box-shadow: 16px 0 60px rgba(0, 0, 0, 0.16);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-nav ul {
+    display: block;
+    gap: 0;
+  }
+
+  .sidebar-close-btn {
+    display: inline-flex;
+  }
+
+  .sidebar-brand {
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 32px;
   }
 
   .main-content {
@@ -910,15 +970,8 @@ a:hover {
     padding: 0 20px;
   }
 
-  .sidebar-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
   .menu-link {
-    flex: 1 1 calc(50% - 10px);
-    min-width: 150px;
+    flex: 1 1 100%;
   }
 
   .sidebar-footer {
@@ -940,6 +993,26 @@ a:hover {
     left: auto;
     width: 100%;
     min-width: auto;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+
+  .mobile-nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    z-index: 110;
+  }
+
+  .mobile-nav-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 
@@ -1002,7 +1075,6 @@ a:hover {
   }
 
   .menu-link {
-    flex: 1 1 100%;
     justify-content: flex-start;
     padding: 12px 16px;
   }

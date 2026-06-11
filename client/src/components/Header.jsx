@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useWallet } from "../context/WalletContext";
-import { FiLink2, FiLogOut, FiCopy, FiCheck, FiChevronDown } from "react-icons/fi";
+import { FiLink2, FiLogOut, FiCopy, FiCheck, FiChevronDown, FiMenu } from "react-icons/fi";
 
-function Header() {
+function Header({ toggleSidebar }) {
   const {
     walletAddress,
     isCorrectNetwork,
@@ -43,6 +43,9 @@ function Header() {
   return (
     <header className="main-header">
       <div className="header-left">
+        <button className="mobile-menu-btn" type="button" onClick={toggleSidebar} aria-label="Open navigation menu">
+          <FiMenu />
+        </button>
         {walletAddress ? (
           isCorrectNetwork ? (
             <div className="network-badge correct">

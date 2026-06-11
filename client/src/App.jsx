@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
@@ -41,16 +41,18 @@ function GatedRoute({ children, title }) {
 
 function App() {
   const { theme } = useWallet();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <BrowserRouter>
       <div className="app-layout" data-theme={theme}>
         <div className="bg-glow-blob blob-1"></div>
         <div className="bg-glow-blob blob-2"></div>
-        <Sidebar />
+        <Sidebar mobileOpen={sidebarOpen} setMobileOpen={setSidebarOpen} />
+        <div className={`mobile-nav-backdrop ${sidebarOpen ? "active" : ""}`} onClick={() => setSidebarOpen(false)} />
 
         <div className="main-content">
-          <Header />
+          <Header toggleSidebar={() => setSidebarOpen((open) => !open)} />
 
           <main className="content-viewport">
             <Routes>
